@@ -1,8 +1,8 @@
-#' init_instaloadeR
+#' init_instar
 #'
-#' @description Initializes the instaloader python functions. Only works when \code{install_instaloadeR()} has ben executed.
+#' @description Initializes the instaloader python functions. Only works when \code{install_instar()} has ben executed.
 #' @export
-init_instaloadeR <- function() {
+init_instar <- function() {
   reticulate::source_python(system.file("python", "instaloader.py",
     package = "instar"
   ))
@@ -10,13 +10,13 @@ init_instaloadeR <- function() {
   message("instaloader initialized")
 }
 
-#' install_instaloadeR
+#' install_instar
 #'
 #'
 #' @description Installs the instaloader Python module
 #' @param envname specify Python environment name for module installation
 #' @export
-install_instaloadeR <- function(envname = NULL) {
+install_instar <- function(envname = NULL) {
   reticulate::py_install(c("instaloader"), pip = TRUE, envname = envname)
 }
 

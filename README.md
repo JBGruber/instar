@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# instaloadeR
+# instar
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/instaloadeR)](https://CRAN.R-project.org/package=instaloadeR)
+status](https://www.r-pkg.org/badges/version/instar)](https://CRAN.R-project.org/package=instar)
 <!-- badges: end -->
 
-The goal of `instaloadeR` is to provide a scraper for the image-sharing
+The goal of `instar` is to provide a scraper for the image-sharing
 social networking service
 [Instagram](http://https://www.instagram.com/). Mostly inspired by this
 Scraping Tool:
@@ -27,13 +27,13 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("favstats/instaloadeR")
+devtools::install_github("JBGruber/instar")
 ```
 
 Load library
 
 ``` r
-library(instaloadeR)
+library(instar)
 ```
 
 Make sure to use your preferred Python installation
@@ -47,17 +47,17 @@ use_python(py_config()$python)
 Install necessary Python libraries
 
 ``` r
-install_instaloadeR()
+install_instar()
 ```
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-Initialize `instaloadeR`
+Initialize `instar`
 
 ``` r
-init_instaloadeR()
+init_instar()
 ```
 
 ### Get Posts with Hashtag
@@ -155,7 +155,7 @@ covidgoodnews
 
 Some functionalities (like scraping followers from an account) are only
 available if you login with your Instagram account. For this purpose,
-`instaloadeR` functions will read from your environment variables.
+`instar` functions will read from your environment variables.
 
 In order to add the info to your environment file, you can use the
 function `edit_r_environ()` from the [`usethis`

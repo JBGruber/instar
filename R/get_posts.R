@@ -10,7 +10,7 @@
 #' @export
 insta_posts <- function(query, scope, max_posts, scrape_comments, save_path = "", since = "", until = "") {
 
-  py$insta_posts_py(query, scope, max_posts, scrape_comments, save_path, since, until) %>%
+  reticulate::py$insta_posts_py(query, scope, max_posts, scrape_comments, save_path, since, until) %>%
     purrr::flatten() %>%
     dplyr::bind_rows() %>%
     unique()# %>%

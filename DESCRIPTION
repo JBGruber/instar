@@ -1,26 +1,38 @@
-Package: instaloadeR
+Package: instar
 Title: Wraps the instaloader python module
 Version: 0.0.0.9001
 Authors@R: 
-    person(given = "Fabio",
-           family = "Votta",
-           role = c("aut", "cre"),
-           email = "fabio.votta@gmail.com.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(person(given = "Johannes B.",
+             family = "Gruber",
+             email = "JohannesB.Gruber@gmail.com", 
+             role = c("aut", "cre"),
+             comment = c(ORCID = "0000-0001-9177-1772")),
+      person(given = "Fabio", 
+             family = "Votta", 
+             email = "fabio.votta@gmail.com", 
+             role = c("aut", "ctb"),
+             comment = c(ORCID = "0000-0002-3143-5942")),
+      person(given = "Daniel", 
+             family = "Thiele", 
+             email = "daniel.thiele@fu-berlin.de", 
+             role = c("aut", "ctb"),
+             comment = c(ORCID = "0000-0003-0324-4943")))
 Description: Wraps the instaloader python module.
 License: GPL-3
 Suggests: 
+    readr,
     testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.1
 Imports: 
     magrittr,
     dplyr,
     reticulate,
-    readr,
     purrr,
     rstudioapi
-URL: https://github.com/favstats/instaloadeR
-BugReports: https://github.com/favstats/instaloadeR/issues
+URL: https://github.com/JBGruber/instar
+Depends: 
+    R (>= 2.10)
+BugReports: https://github.com/JBGruber/instar/issues

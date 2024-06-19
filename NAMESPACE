@@ -2,8 +2,8 @@
 
 export("%>%")
 export(from_unix)
-export(init_instaloadeR)
+export(init_instar)
 export(insta_login)
 export(insta_posts)
-export(install_instaloadeR)
+export(install_instar)
 importFrom(magrittr,"%>%")
