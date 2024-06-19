@@ -20,5 +20,5 @@ insta_login <- function(passwd = "", save = F, load = F) {
   }
 
 
-  py$insta_login_py(user, passwd, save)
+  reticulate::py$insta_login_py(user, passwd, save)
 }
