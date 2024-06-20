@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(instar)
+library(instr)
 
-test_check("instar")
+test_check("instr")

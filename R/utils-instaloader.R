@@ -1,15 +1,15 @@
-#' init_instar
+#' init_instr
 #'
-#' @description Initializes the instaloader python functions. Only works when \code{install_instar()} has ben executed.
+#' @description Initializes the instaloader python functions. Only works when \code{install_instr()} has ben executed.
 #' @param envname initialise in a specific virtual environment
 #' @export
-init_instar <- function(envname = NULL) {
+init_instr <- function(envname = NULL) {
   if (is.null(envname))
-    envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
+    envname <- Sys.getenv("instr_PYTHON", unset = "r-instr")
   check_instaloader_installed(envname)
   reticulate::use_virtualenv(envname)
   reticulate::source_python(system.file("python", "insta.py",
-                                        package = "instar"
+                                        package = "instr"
   ))
 
   instaloader_version <- get_instaloader_version(envname)
@@ -24,7 +24,7 @@ check_instaloader_installed <- function(envname = NULL,
                                         cache = TRUE) {
 
   if (is.null(envname))
-    envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
+    envname <- Sys.getenv("instr_PYTHON", unset = "r-instr")
 
   if (is.null(the$installed) || !cache) {
     p <- try(reticulate::py_list_packages(envname = envname), silent = TRUE)
@@ -44,7 +44,7 @@ check_instaloader_installed <- function(envname = NULL,
 #'
 #' @description Installs the instaloader Python module
 #' @param envname The name of, or path to, a Python virtual environment. Default
-#'   is to use "r-instar" unless set in environment variable INSTAR_PYTHON
+#'   is to use "r-instr" unless set in environment variable instr_PYTHON
 #'   (through `Sys.setenv()`).
 #' @param instaloader_version give a specific version if you want.
 #' @param ask set `FALSE` for unattended install.
@@ -55,7 +55,7 @@ install_instaloader <- function(envname = NULL,
                                 instaloader_version = NULL,
                                 ask = TRUE) {
   if (is.null(envname))
-    envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
+    envname <- Sys.getenv("instr_PYTHON", unset = "r-instr")
   if (!check_instaloader_installed(envname, is_error = FALSE))
     safe_create(envname, ask)
   if (is.null(instaloader_version)) {
@@ -115,7 +115,7 @@ install_python <- function(ask) {
 #' @export
 get_instaloader_version <- function(envname = NULL) {
   if (is.null(envname))
-    envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
+    envname <- Sys.getenv("instr_PYTHON", unset = "r-instr")
   check_instaloader_installed(envname, cache = FALSE)
   packages <- reticulate::py_list_packages(envname)
   packages$version[packages$package == "instaloader"]

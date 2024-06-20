@@ -9,10 +9,10 @@ test_that("installation to explicit env works", {
   }, "character")
 })
 
-test_that("installation to INSTAR_PYTHON works", {
+test_that("installation to instr_PYTHON works", {
   tmp <- file.path(tempdir(), "env2")
   on.exit(unlink(tmp, recursive = TRUE), add = TRUE, after = FALSE)
-  Sys.setenv(INSTAR_PYTHON = tmp)
+  Sys.setenv(instr_PYTHON = tmp)
   expect_equal(check_instaloader_installed(tmp, is_error = FALSE, cache = FALSE),
                FALSE)
   expect_type({

@@ -8,7 +8,7 @@ get_instaloader_version(envname = NULL)
 }
 \arguments{
 \item{envname}{The name of, or path to, a Python virtual environment. Default
-is to use "r-instar" unless set in environment variable INSTAR_PYTHON
+is to use "r-instr" unless set in environment variable instr_PYTHON
 (through \code{Sys.setenv()}).}
 }
 \value{

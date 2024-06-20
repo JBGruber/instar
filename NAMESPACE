@@ -3,7 +3,7 @@
 export("%>%")
 export(from_unix)
 export(get_instaloader_version)
-export(init_instar)
+export(init_instr)
 export(insta_login)
 export(insta_posts)
 export(install_instaloader)
