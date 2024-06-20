@@ -17,7 +17,7 @@ insta_login <- function(user,
 
   if (missing(user)) {
     # look for logins
-    user <- logged_in_users(cache)[1]
+    user <- logged_in_users()[1]
     # if none are found, authenticate
     if (is.null(user)) {
       rlang::check_installed("askpass")
@@ -36,7 +36,7 @@ insta_login <- function(user,
   }
   fname <- paste0(cache, "/", user, "-session")
   if (file.exists(fname) || force_refresh) {
-    sess <- reticulate::py$insta_login_py(file = fname)
+    sess <- reticulate::py$insta_login_py(user, file = fname)
   } else {
     sess <- reticulate::py$insta_login_py(user, password, fname,
                                           save = save,

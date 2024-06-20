@@ -23,7 +23,7 @@ instagram = instaloader.Instaloader(
 
 def insta_login_py(user=None, passwd=None, file=None, save=True, force_refresh=False):
     if os.path.isfile(file) and not force_refresh:
-        instagram.load_session_from_file(file)
+        instagram.load_session_from_file(username=user, filename=file)
         return True
     if not user or not passwd:
         return False
