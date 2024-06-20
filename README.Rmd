@@ -28,13 +28,13 @@ You can install the development version from [GitHub](https://github.com/) with:
 
 ```{r eval = F}
 # install.packages("devtools")
-devtools::install_github("JBGruber/instar")
+devtools::install_github("JBGruber/instr")
 ```
 
 Load library
 
 ```{r example}
-library(instar)
+library(instr)
 
 ```
 
