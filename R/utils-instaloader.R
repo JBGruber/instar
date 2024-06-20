@@ -19,16 +19,22 @@ init_instar <- function(envname = NULL) {
 }
 
 #' @keywords internal
-check_instaloader_installed <- function(envname = NULL, is_error = TRUE) {
+check_instaloader_installed <- function(envname = NULL,
+                                        is_error = TRUE,
+                                        cache = TRUE) {
+
   if (is.null(envname))
     envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
-  if (is.null(the$installed)) {
+
+  if (is.null(the$installed) || !cache) {
     p <- try(reticulate::py_list_packages(envname = envname), silent = TRUE)
     the$installed <- "instaloader" %in% purrr::pluck(p, "package")
   }
+
   if (!the$installed & is_error) {
     cli::cli_abort("The instaloader backend is not installed. Try See {.code install_instaloader()}.")
   }
+
   return(the$installed)
 }
 
@@ -110,7 +116,7 @@ install_python <- function(ask) {
 get_instaloader_version <- function(envname = NULL) {
   if (is.null(envname))
     envname <- Sys.getenv("INSTAR_PYTHON", unset = "r-instar")
-  check_instaloader_installed(envname)
+  check_instaloader_installed(envname, cache = FALSE)
   packages <- reticulate::py_list_packages(envname)
   packages$version[packages$package == "instaloader"]
 }
