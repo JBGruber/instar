@@ -14,10 +14,8 @@ There are a few different things you can get from Instagram with `instr`:
 
 - Get Posts
 
-
-``` r
+```{r}
 init_instr()
-## ✔ instaloader v4.11 initialized
 ```
 
 ## Login with your Instagram account
@@ -28,6 +26,7 @@ This will guide you through the login process and save the login to disk (unless
 
 You can check which logins exist with 
 
+
 ``` r
 logged_in_users()
 #> [1] "jbgruber1"
@@ -36,10 +35,8 @@ logged_in_users()
 If you run `insta_login()` again, it will choose the first saved login it finds in your cache directory.
 If you have several accounts, you can specify which login to use by supplying a username:
 
-
-``` r
-insta_login(user = "jbgruber1")
-## ✔ Logged in as jbgruber1
+```{r}
+insta_login(user = "jandoe195777")
 ```
 
 
@@ -47,22 +44,11 @@ insta_login(user = "jbgruber1")
 
 If you have a list of post URLs or shortcodes, you can query information like this.
 
-
-``` r
+```{r}
 df <- get_post(x = c(
   "https://www.instagram.com/p/C8XNI2tIZ6Z/",
   "https://www.instagram.com/p/C5gQOiiC08D/"
 ))
 df
-## # A tibble: 2 × 31
-##   accessibility_caption mediacount sponsor_users caption   mediaid   supported_graphql_types caption_hashtags
-##   <list>                <list>     <list>        <list>    <list>    <list>                  <list>          
-## 1 <NULL>                <int [1]>  <list [0]>    <chr [1]> <int [1]> <chr [3]>               <chr [8]>       
-## 2 <NULL>                <int [1]>  <list [0]>    <chr [1]> <int [1]> <chr [3]>               <chr [2]>       
-## # ℹ 24 more variables: is_videos <list>, tagged_users <list>, caption_mentions <list>, owner_id <list>,
-## #   title <list>, comments <list>, typename <list>, date <list>, is_pinned <list>, owner_username <list>,
-## #   url <list>, date_local <list>, is_sponsored <list>, pcaption <list>, video_duration <list>,
-## #   date_utc <list>, is_video <list>, profile <list>, video_url <list>, likes <list>, shortcode <list>,
-## #   video_view_count <list>, location <list>, viewer_has_liked <list>
 ```
 
