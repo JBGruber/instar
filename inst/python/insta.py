@@ -21,6 +21,50 @@ instagram = instaloader.Instaloader(
 )
 
 
+def get_post(SHORTCODE):
+    post = instaloader.Post.from_shortcode(instagram.context, SHORTCODE)
+    post_dict = {
+        "accessibility_caption": post.accessibility_caption,
+        "mediacount": post.mediacount,
+        "sponsor_users": post.sponsor_users,
+        "caption": post.caption,
+        "mediaid": post.mediaid,
+        "supported_graphql_types": post.supported_graphql_types(),
+        "caption_hashtags": post.caption_hashtags,
+        "is_videos": post.get_is_videos(),
+        "tagged_users": post.tagged_users,
+        "caption_mentions": post.caption_mentions,
+        # 'likes': post.get_likes(),
+        "owner_id": post.owner_id,
+        "title": post.title,
+        "comments": post.comments,
+        # 'sidecar_nodes': post.get_sidecar_nodes(),
+        # 'owner_profile': post.owner_profile,
+        "typename": post.typename,
+        "date": post.date,
+        "is_pinned": post.is_pinned,
+        "owner_username": post.owner_username,
+        "url": post.url,
+        "date_local": post.date_local,
+        "is_sponsored": post.is_sponsored,
+        "pcaption": post.pcaption,
+        "video_duration": post.video_duration,
+        "date_utc": post.date_utc,
+        "is_video": post.is_video,
+        "profile": post.profile,
+        "video_url": post.video_url,
+        # 'from_iphone_struct': post.from_iphone_struct(),
+        "likes": post.likes,
+        "shortcode": post.shortcode,
+        "video_view_count": post.video_view_count,
+        # 'from_mediaid': post.from_mediaid(),
+        "location": post.location,
+        # 'shortcode_to_mediaid': post.shortcode_to_mediaid()
+        "viewer_has_liked": post.viewer_has_liked,
+    }
+    return post_dict
+
+
 def insta_login_py(user=None, passwd=None, file=None, save=True, force_refresh=False):
     if os.path.isfile(file) and not force_refresh:
         instagram.load_session_from_file(username=user, filename=file)
