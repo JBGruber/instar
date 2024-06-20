@@ -13,14 +13,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# instar
+# instr
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/instar)](https://CRAN.R-project.org/package=instar)
+[![CRAN status](https://www.r-pkg.org/badges/version/instr)](https://CRAN.R-project.org/package=instr)
 <!-- badges: end -->
 
-The goal of `instar` is to provide a scraper for the image-sharing social networking service [Instagram](http://https://www.instagram.com/). Mostly inspired by this Scraping Tool: [digitalmethodsinitiative/4cat](https://github.com/digitalmethodsinitiative/4cat). Wraps this Python module [instaloader](https://github.com/instaloader/instaloader). You will need Python 3.6 or higher to use `instaloader`.
+The goal of `instr` is to provide a scraper for the image-sharing social networking service [Instagram](http://https://www.instagram.com/). Mostly inspired by this Scraping Tool: [digitalmethodsinitiative/4cat](https://github.com/digitalmethodsinitiative/4cat). Wraps this Python module [instaloader](https://github.com/instaloader/instaloader). You will need Python 3.6 or higher to use `instaloader`.
 
 ## Installation
 
@@ -50,7 +50,7 @@ use_python(py_config()$python)
 Install necessary Python libraries
 
 ```{r, eval = F}
-install_instar()
+install_instr()
 ```
 
 
@@ -60,10 +60,10 @@ This is a basic example which shows you how to solve a common problem:
 
 
 
-Initialize `instar`
+Initialize `instr`
 
 ```{r, eval=F}
-init_instar()
+init_instr()
 ```
 
 ### Get Posts with Hashtag
@@ -164,7 +164,7 @@ covidgoodnews
 
 ## Login with your Instagram account
 
-Some functionalities (like scraping followers from an account) are only available if you login with your Instagram account. For this purpose, `instar` functions will read from your environment variables. 
+Some functionalities (like scraping followers from an account) are only available if you login with your Instagram account. For this purpose, `instr` functions will read from your environment variables. 
 
 
 

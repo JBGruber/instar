@@ -1,4 +1,4 @@
-Package: instar
+Package: instr
 Title: Wraps the instaloader python module
 Version: 0.0.0.9001
 Authors@R: 
@@ -22,8 +22,12 @@ License: GPL-3
 Suggests: 
     knitr,
     readr,
+<<<<<<< HEAD
     rmarkdown,
     testthat
+=======
+    testthat (>= 3.0.0)
+>>>>>>> 4e67927f0e1efc8170c8464148dddc52485d976e
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -34,8 +38,13 @@ Imports:
     reticulate,
     purrr,
     rstudioapi
-URL: https://github.com/JBGruber/instar
+URL: https://github.com/JBGruber/instr
 Depends: 
     R (>= 2.10)
+<<<<<<< HEAD
 BugReports: https://github.com/JBGruber/instar/issues
 VignetteBuilder: knitr
+=======
+BugReports: https://github.com/JBGruber/instr/issues
+Config/testthat/edition: 3
+>>>>>>> 4e67927f0e1efc8170c8464148dddc52485d976e
