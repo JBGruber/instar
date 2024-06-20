@@ -19,7 +19,7 @@ insta_login <- function(user,
     # look for logins
     user <- logged_in_users()[1]
     # if none are found, authenticate
-    if (is.null(user)) {
+    if (is.na(user)) {
       rlang::check_installed("askpass")
       user <- askpass::askpass(
         "Please enter your username"
@@ -53,5 +53,5 @@ insta_login <- function(user,
 #' @export
 logged_in_users <- function() {
   cache <- tools::R_user_dir("instr", "cache")
-  na.omit(unlist(strsplit(list.files(cache), "-")))
+  gsub("-session", "", list.files(cache), fixed = TRUE)
 }
