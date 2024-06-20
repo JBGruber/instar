@@ -71,3 +71,75 @@ francediplo_comments <- insta_posts(query = "francediplo",
 
 francediplo_comments
 ```
+
+## Save output to csv
+
+As function scrapes, the data is saved and continously appended to a `.csv` file (for when you have long scraping tasks). Just specify a path for the `save_path` argument.
+
+```{r, eval = F}
+francediplo <- insta_posts(query = "francediplo", 
+                         scope = "username",
+                         max_posts = 5, 
+                         scrape_comments = F, 
+                         save_path = "./francediplo.csv")
+
+readr::read_csv("./francediplo.csv")
+
+# Remove file
+unlink("./francediplo.csv")
+```
+
+
+## Get User or Hashtag posts in specific timerange
+
+Just specify both an argument for `since` (latest date) and `until` (earliest date) and get Instagram posts in specific timerange.
+
+```{r, eval = F}
+soeder <- insta_posts(query = "markus.soeder",
+                         scope = "username",
+                         max_posts = 20,
+                         scrape_comments = F,
+                         since = "2024-06-15",
+                         until = "2024-06-20"
+                      )
+soeder
+
+```
+
+## Login with your Instagram account
+
+Some functionalities (like scraping followers from an account) are only available if you login with your Instagram account. For this purpose, `instar` functions will read from your environment variables. 
+
+
+
+In order to add the info to your environment file, you can use the function `edit_r_environ()` from the [`usethis` package](https://usethis.r-lib.org/).
+
+```{r, eval = F}
+usethis::edit_r_environ()
+```
+
+
+This will open your .Renviron file in your text editor. Now, you can add the following line(s) to it:
+
+```{r, eval = F}
+INSTAGRAM_LOGIN=YOUR_USERNAME
+INSTAGRAM_PW=YOUR_PW
+```
+
+Save the file and restart R for the changes to take effect.
+
+The password line is optional and can also be provided via a prompt which will appear if you run `insta_login` without specifying the `passwd` argument (if you are icky about typing out your password which you should always be).
+
+Now you can use `insta_login` in the following way:
+
+```{r, eval=F}
+insta_login(save = T)
+```
+
+`save = T` will save your credentials, so next time you can just do `load = T` and you don't need to specify your password again:
+
+```{r, eval=F}
+insta_login(load = T)
+```
+
+
