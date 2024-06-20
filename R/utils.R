@@ -3,7 +3,7 @@
 #' @description Initializes the instaloader python functions. Only works when \code{install_instar()} has ben executed.
 #' @export
 init_instar <- function() {
-  reticulate::source_python(system.file("python", "instaloader.py",
+  reticulate::source_python(system.file("python", "instar.py",
     package = "instar"
   ))
 

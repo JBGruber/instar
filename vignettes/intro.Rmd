@@ -21,7 +21,11 @@ Make sure to use your preferred Python installation
 ```{r}
 library(reticulate)
 
-use_python(py_config()$python)
+# use_python(py_config()$python)
+use_python("C:/ProgramData/miniconda3/")
+
+devtools::load_all()
+
 
 ```
 
