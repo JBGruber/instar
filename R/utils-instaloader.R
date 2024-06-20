@@ -13,6 +13,7 @@ init_instr <- function(envname = NULL) {
   ))
 
   instaloader_version <- get_instaloader_version(envname)
+  the$init <- TRUE
   cli::cli_alert_success(
     "instaloader v{cli::style_italic(instaloader_version)} initialized"
   )
