@@ -2,17 +2,19 @@
 % Please edit documentation in R/login.R
 \name{insta_login}
 \alias{insta_login}
-\title{insta_login}
+\title{Log into Instagram}
 \usage{
-insta_login(passwd = "", save = F, load = F)
+insta_login(user, password, save = TRUE, force_refresh = FALSE)
 }
 \arguments{
-\item{passwd}{Specify your Instagram password. If you leave empty a prompt will ask you for input.}
+\item{user, password}{Specify your Instagram user and password. It's better to
+leave this empty, in which case a secure prompt will ask you for input.}
 
-\item{save}{save your session so you don't need to specify password again}
+\item{save}{save your session to the cache, so you don't need to specify
+password again.}
 
-\item{load}{load the instagram session by just setting INSTAGRAM_LOGIN environment variable. Will only work if you have saved your credentials before.}
+\item{force_refresh}{overwrite existing sessions in cache.}
 }
 \description{
-insta_login
+Log into Instagram
 }

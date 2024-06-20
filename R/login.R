@@ -1,24 +1,57 @@
-#' insta_login
+#' Log into Instagram
 #'
-#' @param passwd Specify your Instagram password. If you leave empty a prompt will ask you for input.
-#' @param save save your session so you don't need to specify password again
-#' @param load load the instagram session by just setting INSTAGRAM_LOGIN environment variable. Will only work if you have saved your credentials before.
+#' @param user,password Specify your Instagram user and password. It's better to
+#'   leave this empty, in which case a secure prompt will ask you for input.
+#' @param save save your session to the cache, so you don't need to specify
+#'   password again.
+#' @param force_refresh overwrite existing sessions in cache.
 #' @export
-insta_login <- function(passwd = "", save = F, load = F) {
+insta_login <- function(user,
+                        password,
+                        save = TRUE,
+                        force_refresh = FALSE) {
 
-  if(Sys.getenv("INSTAGRAM_LOGIN") != ""){
-    user <- Sys.getenv("INSTAGRAM_LOGIN")
-  } else {
-    stop("You need to set a INSTAGRAM_LOGIN environment variable.")
-  }
-  if (!load){
-    if(Sys.getenv("INSTAGRAM_PW") != ""){
-      passwd <- Sys.getenv("INSTAGRAM_PW")
-    } else if (passwd == ""){
-      passwd <- rstudioapi::askForPassword("Please enter your Instagram PW")
+  check_init()
+
+  cache <- tools::R_user_dir("instr", "cache")
+
+  if (missing(user)) {
+    # look for logins
+    user <- logged_in_users(cache)[1]
+    # if none are found, authenticate
+    if (is.null(user)) {
+      rlang::check_installed("askpass")
+      user <- askpass::askpass(
+        "Please enter your username"
+      )
+      if (missing(password)) {
+        rlang::check_installed("askpass")
+        password <- askpass::askpass(
+          "Please enter your password"
+        )
+      }
+    } else {
+      password <- NULL
     }
   }
+  fname <- paste0(cache, "/", user, "-session")
+  if (file.exists(fname) || force_refresh) {
+    sess <- reticulate::py$insta_login_py(file = fname)
+  } else {
+    sess <- reticulate::py$insta_login_py(user, password, fname,
+                                          save = save,
+                                          force_refresh = force_refresh)
+  }
+  cli::cli_alert_success("Logged in as {user}")
+  invisible(sess)
+}
 
 
-  reticulate::py$insta_login_py(user, passwd, save)
+#' Looked for logged in users
+#'
+#' @return a vector of usernames
+#' @export
+logged_in_users <- function() {
+  cache <- tools::R_user_dir("instr", "cache")
+  na.omit(unlist(strsplit(list.files(cache), "-")))
 }
